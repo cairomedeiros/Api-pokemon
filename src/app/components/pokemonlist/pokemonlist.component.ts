@@ -8,26 +8,20 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   styleUrls: ['./pokemonlist.component.sass']
 })
 export class PokemonlistComponent implements OnInit {
-  pokemon: any = [];
-  erro: any;
-  dataA: any;
+public getallpokemons: any;
   constructor(private pokemonService: PokemonService) { 
-    this.getter();
+    
   }
 
   ngOnInit(): void {
-  }
-
-  getter(){
     this.pokemonService.getPokemon().subscribe(
-      (data: PokeName) => {
-        this.pokemon = data;
-
-      console.log("data recebido", data);
-      console.log("variavel preenchida", this.pokemon);
-    }, (error: any) => {
-      this.erro = error
-    })
+      res => {
+        this.getallpokemons = res.results;
+        console.log(this.getallpokemons)
+      }
+    );
   }
+
+ 
 
 }
