@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable} from 'rxjs';
-import { PokeName } from '../models/pokemon.model';
 
 import { map, tap } from 'rxjs/operators';
+import { ObsTip } from '../models/observableTipagem';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,9 @@ export class PokemonService {
 
   constructor(private httpClient: HttpClient){}
 
-    public getPokemon():Observable<any>{
+    public getPokemon():Observable<ObsTip>{
 
-        const data = this.httpClient.get<any>(this.url)
+        const data = this.httpClient.get<ObsTip>(this.url)
 
         console.log(data)
         return data;
