@@ -11,32 +11,19 @@ import { map, tap } from 'rxjs/operators';
 export class PokemonService {
 
 
-  private url: string = 'https://pokeapi.co/api/v2/pokemon?limit=151';
+  private url: string = 'https://pokeapi.co/api/v2/pokemon?limit=10';
 
   constructor(private httpClient: HttpClient){}
 
     public getPokemon():Observable<any>{
 
-        return this.httpClient.get<any>(this.url).pipe(
-          tap(res => res),
-          tap(res => {
-            res.results.map( (resPokemons: any) => {
+        const data = this.httpClient.get<any>(this.url)
 
-              this.apiGetPokemons(resPokemons.url).subscribe(
-                res => resPokemons.status = res
-              )
-            })
-          })
-        );
+        console.log(data)
+        return data;
 
     }
 
-    public apiGetPokemons(url: string):Observable<any>{
-      return this.httpClient.get<any>(url).pipe(
-        map(
-          res => res
-        )
-      )
-    }
+   
 
 }

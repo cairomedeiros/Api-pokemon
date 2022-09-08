@@ -1,3 +1,4 @@
-export class PokeName{
-    public name: string = "";
+export interface PokeName{
+    name: string;
+    url: string;
 }
